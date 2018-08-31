@@ -25,25 +25,25 @@ const blockArray = [];
 let transactions1 = ["i am a bad man 1", "I love blockchain 1"];
 let block1 = new Block(0, transactions1);
 blockArray.push(block1);
-console.log("Mining started...1");
+console.log("Mining started...1", block1.blockHash);
 block1.miningBlock(1);
 
 let transactions2 = ["i am a bad man 2", "I love blockchain 2"];
 let block2 = new Block(block1.blockHash, transactions2);
 blockArray.push(block2);
-console.log("Mining started...2");
+console.log("Mining started...2", block2.blockHash);
 block2.miningBlock(1);
 
 let transactions3 = ["i am a bad man 3", "I love blockchain 3"];
 let block3 = new Block(block2.blockHash, transactions3);
 blockArray.push(block3);
-console.log("Mining started...3");
+console.log("Mining started...3", block3.blockHash);
 block3.miningBlock(1);
 
 let transactions4 = ["i am a bad man 4", "I love blockchain 4"];
 let block4 = new Block(block3.blockHash, transactions4);
 blockArray.push(block4);
-console.log("Mining started...4");
+console.log("Mining started...4", block4.blockHash);
 block4.miningBlock(1);
 
 let isValid = isValidChain(1);

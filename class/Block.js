@@ -38,12 +38,14 @@ class Block {
 
 }
 
+
 Block.prototype.calculateHash = function calculateHash() {
     const secret = 'blockchain';
     return crypto.createHmac('sha256', secret)
         .update(JSON.stringify({ transactionsHash: this.transactionsHash, previousHash: this.previousHash, timestamp: this.timestamp }))
         .digest('hex');
 };
+
 
 Block.prototype.miningBlock = function miningBlock(diffculty) {
     let array = new Array(diffculty);
