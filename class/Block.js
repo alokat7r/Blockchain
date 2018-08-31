@@ -42,7 +42,7 @@ class Block {
 Block.prototype.calculateHash = function calculateHash() {
     const secret = 'blockchain';
     return crypto.createHmac('sha256', secret)
-        .update(JSON.stringify({ transactionsHash: this.transactionsHash, previousHash: this.previousHash, timestamp: this.timestamp }))
+        .update(JSON.stringify({ transactionsHash: this.transactionsHash, previousHash: this.previousHash, timestamp: this.timestamp, nonce: String(this.nonce) }))
         .digest('hex');
 };
 
@@ -55,6 +55,7 @@ Block.prototype.miningBlock = function miningBlock(diffculty) {
     while (!(this.blockHash.substring(0, diffculty) == target)) {
         this.nonce++;
         this.blockHash = this.calculateHash();
+        console.log("-", this.blockHash);
     }
     console.log("Block Mined!!", this.blockHash);
 };
